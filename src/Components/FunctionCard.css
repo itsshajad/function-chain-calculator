@@ -1,0 +1,58 @@
+.card-box {
+    background-color: aliceblue;
+    padding: 15px 20px 20px;
+    border: 1px solid rgba(223, 223, 223, 1);
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 15px;
+    width: 235px;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.05);
+}
+.header{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+.heading-text{
+    color: rgba(165, 165, 165, 1);
+}
+
+.dot-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.72px;
+    justify-content: space-between;
+}
+.dot{
+    width: 2.73px;
+    height: 2.73px;
+    border-radius: 50%;
+    background-color: rgba(205, 205, 205, 1);
+}
+
+.input-container{
+    margin-bottom: 17px;
+}
+
+.label {
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    display: block;
+}
+
+.input {
+    width: 100%;
+    height: 33px;
+    border-radius: 5px;
+    border: 1px solid rgba(211, 211, 211, 1);
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    font-size: 12px;
+    outline: none;
+    padding: 9px 11px;
+}
+.input:disabled{
+    background-color: rgba(245, 245, 245, 1);
+    border: 1px solid rgba(211, 211, 211, 1)
+}
