@@ -1,0 +1,51 @@
+import React, {
+  ChangeEvent,
+  Dispatch,
+  FC,
+  RefObject,
+  SetStateAction,
+} from 'react';
+
+interface InitialProps {
+  id: number;
+  connectionRef: RefObject<{
+    [key: number]: HTMLDivElement | null;
+  }>;
+  value: number | string;
+  setOutput: Dispatch<SetStateAction<Record<number, number>>>;
+}
+
+const Initial: FC<InitialProps> = ({ connectionRef, id, value, setOutput }) => {
+  const { left, bottom }: Pick<DOMRect, 'left' | 'bottom'> =
+    connectionRef.current[Number(id) + 1]?.getBoundingClientRect() || {
+      left: 0,
+      bottom: 0,
+    };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setOutput((prevState) => ({
+      ...prevState,
+      [id]: Number(e.target.value),
+    }));
+  };
+
+  return (
+    <div
+      className="initial input-output"
+      style={{ left: left - 123, top: bottom - 50 }}
+      ref={(el) => {
+        if (!connectionRef.current) return;
+        connectionRef.current[id] = el;
+      }}
+    >
+      <div className="relative height-100">
+        <input type="text" value={value} onChange={handleChange} />
+        <div className="radio-container right-0">
+          <div className="radio" id="output" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Initial;

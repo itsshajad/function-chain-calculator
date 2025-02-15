@@ -1,3 +1,41 @@
+/* utils css */
+.container {
+    flex-wrap: 'wrap';
+    justify-content: 'center';
+    gap: '107px 131px';
+    margin-top: '100px';
+    margin-bottom: '100px';
+}
+
+.relative {
+    position: relative;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.right-0 {
+    right: 0;
+}
+
+.mt-46 {
+    margin-top: 46px;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.gap-4 {
+    gap: 4px;
+}
+
 .card-box {
     background-color: aliceblue;
     padding: 15px 20px 20px;
@@ -7,30 +45,32 @@
     width: 235px;
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.05);
 }
-.header{
+
+.header {
     display: flex;
     align-items: center;
     gap: 7px;
     margin-bottom: 20px;
 }
-.heading-text{
+
+.heading-text {
     color: rgba(165, 165, 165, 1);
 }
 
-.dot-container{
+.dot-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1.72px;
-    justify-content: space-between;
 }
-.dot{
+
+.dot {
     width: 2.73px;
     height: 2.73px;
     border-radius: 50%;
     background-color: rgba(205, 205, 205, 1);
 }
 
-.input-container{
+.input-container {
     margin-bottom: 17px;
 }
 
@@ -52,7 +92,102 @@
     outline: none;
     padding: 9px 11px;
 }
-.input:disabled{
+
+.input:disabled {
     background-color: rgba(245, 245, 245, 1);
     border: 1px solid rgba(211, 211, 211, 1)
+}
+
+.radio {
+    width: 15px;
+    height: 15px;
+    border-width: 2px;
+    background-color: rgba(255, 255, 255, 1);
+    border: 2px solid rgba(219, 219, 219, 1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+        content: "";
+        width: 7px;
+        height: 7px;
+        top: 384px;
+        left: 655px;
+        background: rgba(102, 163, 255, 1);
+        border-radius: 50%;
+    }
+
+}
+
+.footertext {
+    font-size: 12px;
+    color: rgba(88, 87, 87, 1);
+    font-weight: 500;
+}
+
+.connection-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.initial {
+    border: 2px solid rgba(255, 194, 103, 1);
+    left: 0;
+
+    & .radio-container {
+        border-left: 1px solid rgba(255, 238, 213, 1);
+    }
+}
+
+.input-output {
+    position: absolute;
+    width: 115px;
+    height: 50px;
+    border-width: 2px;
+    border-radius: 15px;
+
+    & .radio-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 44px;
+        position: absolute;
+    }
+
+    & input {
+        width: 71px;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        outline: none;
+        border: none;
+        padding-left: 20px;
+        font-weight: 700;
+        font-size: 18px;
+        border-radius: 15px 0 0 15px;
+
+    }
+}
+
+.final {
+    border: 2px solid rgba(45, 209, 121, 1);
+    right: 0;
+
+    & .radio-container {
+        border-right: 1px solid rgba(197, 242, 218, 1)
+    }
+
+    & input {
+        left: unset;
+        right: 0;
+    }
 }

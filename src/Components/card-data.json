@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "header": "Function: 1",
+    "input": {
+      "label": "Equation",
+      "value": "x+2"
+    },
+    "connectionId": 2
+  },
+  {
+    "id": 2,
+    "header": "Function: 2",
+    "input": {
+      "label": "Equation",
+      "value": "x+4"
+    },
+    "connectionId": 4
+  },
+  {
+    "id": 3,
+    "header": "Function: 3",
+    "input": {
+      "label": "Equation",
+      "value": "x+20"
+    },
+    "connectionId": 6
+  },
+  {
+    "id": 4,
+    "header": "Function: 4",
+    "input": {
+      "label": "Equation",
+      "value": "x+2"
+    },
+    "connectionId": 5
+  },
+  {
+    "id": 5,
+    "header": "Function: 5",
+    "input": {
+      "label": "Equation",
+      "value": "x+2"
+    },
+    "connectionId": 3
+  }
+]
