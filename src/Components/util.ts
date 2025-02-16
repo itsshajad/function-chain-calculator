@@ -1,38 +1,42 @@
-const parseMathExpression = (expression: string): (number | string)[] => {
-    const matches = expression.match(/(\d+|\D)/g) ?? [];
-    return matches.map((item: string) => (/\d/.test(item) ? Number(item) : item));
+const parseExpression = (expression: string): (number | string)[] => {
+    const tokens = expression.match(/(\d+|\D)/g) ?? [];
+    return tokens.map((token: string) => (/\d/.test(token) ? Number(token) : token));
 }
 
+const operatorFunctions = {
+    '+': (a: number, b: number) => a + b,
+    '-': (a: number, b: number) => a - b,
+    '/': (a: number, b: number) => a / b,
+    '*': (a: number, b: number) => a * b,
+    '^': (a: number, b: number) => Math.pow(a, b),
+} as const;
 
-const operations: Record<string, (a: number, b: number) => number> = {
-    '+': (a, b) => a + b,
-    '-': (a, b) => a - b,
-    '/': (a, b) => a / b,
-    '*': (a, b) => a * b,
-    '^': (a, b) => Math.pow(a, b),
-};
+type Operator = keyof typeof operatorFunctions;
 
-export const Calculate = (equation: string, x: number) => {
-    const equationArray = parseMathExpression(equation);
-    let result: number = 0;
+export const Calculate = (equation: string, x: number): number => {
+    const parsedTokens = parseExpression(equation);
+    let currentResult: number | null = null;
 
-    let operator: ((a: number, b: number) => number) | null = null;
+    let currentOperator: Operator = '*';
 
-    for (const item of equationArray) {
-        if (item === 'x') {
-            result = operator ? operator(result, x) : x;
+    for (let i = 0; i < parsedTokens.length; i++) {
+        if (parsedTokens[i] === 'x') {
+            currentResult = currentResult !== null ? operatorFunctions[currentOperator](currentResult, x) : x;
+            continue;
         }
-        else if (typeof item === 'string' && item in operations) {
-            operator = operations[item];
+        if (isNaN(+parsedTokens[i])) {
+            currentOperator = parsedTokens[i] as Operator;
+            continue;
         }
-        else {
-            result = operator ? operator(result, Number(item)) : Number(result);
-            operator = null;
+        if (currentResult === null) {
+            currentResult = +parsedTokens[i];
+        } else {
+            currentResult = operatorFunctions[currentOperator](currentResult, +parsedTokens[i]);
         }
+        currentOperator = '*';
     }
-    return result;
+    return currentResult || 0;
 };
-
 
 // Valid equation
 export const isValidEquation = (equation: string): boolean => {
