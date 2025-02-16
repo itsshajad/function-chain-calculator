@@ -40,3 +40,8 @@ export const isValidEquation = (equation: string): boolean => {
 
     return validEquationRegex.test(equation);
 };
+
+export const calculateWidth = (base: number, currentRef: string) =>
+    currentRef.length > 4
+        ? `${(currentRef.length - 4) * 10 + base}px`
+        : `${base}px`;
