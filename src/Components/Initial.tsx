@@ -17,7 +17,7 @@ interface InitialProps {
 
 const Initial: FC<InitialProps> = ({ connectionRef, id, value, setOutput }) => {
   const { left, bottom }: Pick<DOMRect, 'left' | 'bottom'> =
-    connectionRef.current[Number(id) + 1]?.getBoundingClientRect() || {
+    connectionRef.current[id]?.getBoundingClientRect() || {
       left: 0,
       bottom: 0,
     };
@@ -32,10 +32,11 @@ const Initial: FC<InitialProps> = ({ connectionRef, id, value, setOutput }) => {
   return (
     <div
       className="initial input-output"
+      id={'0'}
       style={{ left: left - 123, top: bottom - 50 }}
       ref={(el) => {
         if (!connectionRef.current) return;
-        connectionRef.current[id] = el;
+        connectionRef.current[0] = el;
       }}
     >
       <div className="relative height-100">

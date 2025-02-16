@@ -80,9 +80,9 @@ const FunctionCard: FC<FunctionCardInterFace> = ({
           <label htmlFor="next function" className="label">
             Next function
           </label>
-          <select disabled className="input">
+          <select disabled value={connectionId} className="input">
             {CardDate.map((item) => (
-              <option selected={item.id === connectionId} value={item.id}>
+              <option key={item.id} value={item.id}>
                 {item.header}
               </option>
             ))}

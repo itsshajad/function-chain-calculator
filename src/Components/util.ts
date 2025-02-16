@@ -46,7 +46,6 @@ export const Calculate = (equation: string, x: number) => {
         }
         result = executeMethod?.(result, +equationArray[i]) || result;
         executeMethod = null;
-        console.log('result', result);
     }
     return result;
 };

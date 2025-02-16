@@ -28,7 +28,7 @@ const Final: FC<FinalProps> = ({ id, connectionRef, output }) => {
         <div className="radio-container">
           <div className="radio" id="input" />
         </div>
-        <input disabled type="text" value={output} />
+        <input disabled type="text" value={output || ''} />
       </div>
     </div>
   );

@@ -1,4 +1,10 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, {
+  Fragment,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import FunctionCard from './Components/FunctionCard';
 import ConnectionLine from './Components/ConnectionLine';
 import cardData from './Components/card-data.json';
@@ -17,12 +23,8 @@ const App = () => {
     5: 0,
   });
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowConnections(true);
-    }, 20);
-
-    return () => clearTimeout(timeout);
+  useLayoutEffect(() => {
+    requestAnimationFrame(() => setShowConnections(true));
   }, []);
 
   return (
@@ -43,6 +45,14 @@ const App = () => {
         connectionRef={connectionRef}
         setOutput={setInitialValue}
       />
+
+      {showConnections && (
+        <ConnectionLine
+          id={0}
+          connectionId={cardData[0]?.id}
+          connectionRef={connectionRef}
+        />
+      )}
 
       {cardData.map((val: DataObject) => (
         <Fragment key={val.id}>

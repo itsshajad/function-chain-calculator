@@ -35,14 +35,6 @@ const ConnectionLine = ({ id, connectionId, connectionRef }) => {
         fill="transparent"
         strokeWidth="7"
       />
-      {/* <line
-        x1={connection[0].left}
-        y1={connection[0].top}
-        x2={connection[1].left}
-        y2={connection[1].top}
-        stroke={'blue'}
-        strokeWidth="2"
-      /> */}
     </svg>
   );
 };
