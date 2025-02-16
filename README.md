@@ -40,7 +40,7 @@ This is a web application that allows users to execute a chain of 5 mathematical
 
 ## Deployment
 The application is deployed at:
-🔗 [Live Preview](https://function-chain-calculator-7h1lf01t5-itsshajads-projects.vercel.app/)
+🔗 [Live Preview](https://function-chain-calculator-eight.vercel.app/)
 
 ## Repository
 🔗 [GitHub Repo](https://github.com/itsshajad/function-chain-calculator.git)
