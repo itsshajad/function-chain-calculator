@@ -10,7 +10,7 @@ import React, {
 import './FunctionCard.css';
 import { DataObject } from './type';
 import CardDate from './card-data.json';
-import { Calculate } from './util';
+import { Calculate, isValidEquation } from './util';
 import Dot from './Dot';
 
 interface FunctionCardInterFace {
@@ -28,15 +28,18 @@ const FunctionCard: FC<FunctionCardInterFace> = ({
   value,
   setOutput,
 }) => {
-  const { input, header, id, connectionId } = data as DataObject;
+  const { input, header, id, connectionId } = data;
   const [equation, setEquation] = useState<string>(data.input?.value || '');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEquation(e.target.value);
-    setOutput((prev) => {
-      const output = Calculate(e.target.value, prev[id]);
-      return { ...prev, [connectionId as number]: output };
-    });
+    const value = e.target.value;
+    if (isValidEquation(value)) {
+      setEquation(value);
+      setOutput((prev) => {
+        const output = Calculate(value, prev[id]);
+        return { ...prev, [connectionId as number]: output };
+      });
+    }
   };
 
   useEffect(() => {

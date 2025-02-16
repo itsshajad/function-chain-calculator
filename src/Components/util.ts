@@ -50,3 +50,10 @@ export const Calculate = (equation: string, x: number) => {
     return result;
 };
 
+
+// Valid equation
+export const isValidEquation = (equation: string): boolean => {
+    const validEquationRegex = /^[0-9x+\-*/^().\s]+$/;
+
+    return validEquationRegex.test(equation);
+};
