@@ -4,48 +4,34 @@ const parseMathExpression = (expression: string): (number | string)[] => {
 }
 
 
-const calculationCase = (operator: string | number) => {
-    switch (operator) {
-        case '+':
-            return (x: number, y: number) => x + y;
-
-        case '-':
-            return (x: number, y: number) => x - y;
-
-        case '/':
-            return (x: number, y: number) => x / y;
-
-        case '*':
-            return (x: number, y: number) => x * y;
-
-        case '^':
-            return (x: number, y: number) => Math.pow(x, y);
-
-        default:
-            return null;
-    }
+const operations: Record<string, (a: number, b: number) => number> = {
+    '+': (a, b) => a + b,
+    '-': (a, b) => a - b,
+    '/': (a, b) => a / b,
+    '*': (a, b) => a * b,
+    '^': (a, b) => Math.pow(a, b),
 };
 
+console.log(operations['+'](2, 3))
 export const Calculate = (equation: string, x: number) => {
     const equationArray = parseMathExpression(equation);
     let result: number = 0;
 
-    let executeMethod: ((x: number, y: number) => number) | null = null;
+    console.log('equationArray', equationArray)
+    let operator: ((a: number, b: number) => number) | null = null;
 
-    for (let i = 0; i < equationArray.length; i++) {
-        if (equationArray[i] === 'x') {
-            result = executeMethod ? executeMethod(result, x) : x;
-            continue;
+    for (const item of equationArray) {
+        if (item === 'x') {
+            result = operator ? operator(result, x) : x;
         }
-        if (isNaN(+equationArray[i])) {
-            executeMethod = calculationCase(equationArray[i]);
-            continue;
+        else if (typeof item === 'string' && item in operations) {
+            console.log('item', operations[item])
+            operator = operations[item];
         }
-        if (executeMethod === null) {
-            result = +equationArray[i];
+        else {
+            result = operator ? operator(result, Number(item)) : Number(result);
+            operator = null;
         }
-        result = executeMethod?.(result, +equationArray[i]) || result;
-        executeMethod = null;
     }
     return result;
 };

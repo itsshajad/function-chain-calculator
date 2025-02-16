@@ -49,7 +49,7 @@ The application is deployed at:
 ```
 📂 function-chain-calculator
 │── 📁 src
-│   ├── 📁 components  # Reusable UI components
+│   ├── 📁 components  # All function chaining component and logics are inside this.
 │   ├── App.tsx       # Main application entry point
 │   ├── index.tsx      # React DOM rendering
 │── 📄 package.json    # Dependencies and scripts
