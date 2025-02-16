@@ -12,12 +12,10 @@ const operations: Record<string, (a: number, b: number) => number> = {
     '^': (a, b) => Math.pow(a, b),
 };
 
-console.log(operations['+'](2, 3))
 export const Calculate = (equation: string, x: number) => {
     const equationArray = parseMathExpression(equation);
     let result: number = 0;
 
-    console.log('equationArray', equationArray)
     let operator: ((a: number, b: number) => number) | null = null;
 
     for (const item of equationArray) {
@@ -25,7 +23,6 @@ export const Calculate = (equation: string, x: number) => {
             result = operator ? operator(result, x) : x;
         }
         else if (typeof item === 'string' && item in operations) {
-            console.log('item', operations[item])
             operator = operations[item];
         }
         else {
