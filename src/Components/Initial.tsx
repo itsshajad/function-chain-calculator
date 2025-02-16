@@ -23,10 +23,14 @@ const Initial: FC<InitialProps> = ({ connectionRef, id, value, setOutput }) => {
     };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setOutput((prevState) => ({
-      ...prevState,
-      [id]: Number(e.target.value),
-    }));
+    const value = e.target.value;
+    const numberPatter = /^[0-9]+$/;
+    if (numberPatter.test(value)) {
+      setOutput((prevState) => ({
+        ...prevState,
+        [id]: Number(e.target.value),
+      }));
+    }
   };
 
   return (
